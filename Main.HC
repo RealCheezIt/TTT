@@ -19,7 +19,7 @@ cy = 140 + (i/3) * 100;
 if (board[i] == 1) {
 dc->color = LTCYAN;
 dc-> thick = 4;
-GrCircle3)(dc, cx, cy, 0, 35);
+GrCircle3(dc, cx, cy, 0, 35);
 }
 else if (board[i] == 2){
 dc->color=LTRED;
@@ -56,9 +56,10 @@ return 0;
 }
 
 U0 TTT(){
-I64 i, mx, my, col,row, idx, turn = 0 
+I64 i, mx, my, col,row, idx, turn = 0;
 Bool clicked = FALSE;
 
+player = 1; w = 0;
 for (i = 0; i <9; i++) board[i]=0;
 SettingsPush;
 WinMax;
@@ -68,6 +69,7 @@ while (TRUE){
 if (ScanKey (, TRUE) == SC_ESC) break;
 
 if (ms.lb && ! clicked && w == 0){
+clicked = TRUE;
 mx = ms.pos.x - Fs->pix_left;
 my = ms.pos.y - Fs->pix_top;
 if(mx>= 170 && mx < 470 && my >= 90 && my <390){
